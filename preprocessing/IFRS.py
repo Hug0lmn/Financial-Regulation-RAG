@@ -1,7 +1,6 @@
 import pdfplumber
 from pathlib import Path
 import re
-import numpy as np
 import fitz
 
 #The first page that needs ocr will be deleted after and only the 73 really needs ocr. I actually used ChatGPT to get directly the text from the page directly and the layout as it needed really specific instructions to get good results while some texts were missing whatever I'm doing
@@ -148,6 +147,10 @@ def appendix_def (page) :
 def extract_text_from_ifrs_lines(page) :
     
     global_ = []
+    page = sorted(page, key=lambda w: (w["top"], w["x0"]))
+    leftest_text = min(page, key=lambda d : d["x0"]) 
+    #Get the leftest text, to identify if the text can be a title
+    #Because some subtitle have the same height as the title so it's lead to identifying error
 
     for j in range(1,len(page)) :
 
@@ -156,16 +159,25 @@ def extract_text_from_ifrs_lines(page) :
 
         word["height"] = round(word["height"],1)
         word_1["height"] = round(word_1["height"],1)
+        true_title = abs(word["x0"] - leftest_text["x0"]) < 0.4
 
             #do not count footpage/headers 
         if (word["top"] < 105) or (word["top"] > 710) or (word["height"] >12):
             continue
 
         if global_ == [] : 
-            if word["height"] >= 11 :
-                global_.extend(f'_title_{word["text"]}')
+            if (word["height"] >= 11) :
+                if true_title : 
+                    global_.extend(f'_title_{word["text"]}')
+                else : 
+                    global_.extend(f'_subtitle_{word["text"]}')
+
             elif word["height"] > 9 :
-                global_.extend(f'_subtitle_{word["text"]}')
+                if "bold" in word["fontname"].lower() :
+                    global_.extend(f'_subsection_{word["text"]}')
+                else : 
+                    global_.extend(f'_subsubsection_{word["text"]}')
+
             else : 
                 global_.extend(word["text"])
 
@@ -179,9 +191,17 @@ def extract_text_from_ifrs_lines(page) :
         elif abs(word_1["bottom"] - word["bottom"]) > 13 : 
 
             if (word["height"] >= 11) :
-                global_.extend(f'\n_title_{word["text"]}')
+                if true_title :
+                    global_.extend(f'\n_title_{word["text"]}')
+                else : 
+                    global_.extend(f'\n_subtitle_{word["text"]}')
+
             elif word["height"] > 9 :
-                global_.extend(f'\n_subtitle_{word["text"]}')
+                if "bold" in word["fontname"].lower() :
+                    global_.extend(f'\n_subsection_{word["text"]}')
+                else : 
+                    global_.extend(f'\n_subsubsection_{word["text"]}')
+
             elif (word["height"] < 8) :
                 global_.extend(f'\n_footnote_{word["text"]}')
                 
@@ -205,7 +225,7 @@ def global_process_ifrs(file_path) :
         for page in pdf.pages:
             text_blocks.append(page.extract_text())
             tables.append(page.extract_tables()) #Will help identify page with table to perform specific cleaning
-            words.append(page.extract_words())
+            words.append(page.extract_words(extra_attrs=["fontname"]))
 
     doc = fitz.open(file_path)
 
@@ -253,4 +273,30 @@ def global_process_ifrs(file_path) :
             else :
                 text_final.append(extract_text_from_ifrs_lines(words[j]).strip())
 
-    return text_final
+    for j in range(len(text_final)) :
+            #Some part are deleted, it has to do with new version of the file
+        text_final[j] = re.sub(r'\n.*\[Deleted\].*\n',"\n",text_final[j]) 
+        text_final[j] = re.sub(r'\n.*\[deleted\].*\n',"\n",text_final[j])
+
+        text_final[j] = re.sub(r"\nIFRS \d+ \n", "", text_final[j])
+        text_final[j] = re.sub(r".*IFRS Foundation.*", "", text_final[j])
+
+        final_text = "\n".join(text_final)
+            #If a part isn't finished at the end of a page
+        final_text = re.sub(r"([a-z]+)\n([a-z]+)", r"\1 \2",final_text)
+            #If a part isn't finished at the end of a page, while there is a footnote between the two 
+        final_text = re.sub(r"([a-z])\s*\n(_footnote_.*\n)([a-z].*\n)", r"\1\3\2",final_text)
+
+        final_text = re.sub(r"\.\.\.continued|\n_footnote_continued\.\.\.\n","", final_text)
+
+            #Delete double or more \n
+        final_text = re.sub(r"\n{2,}","\n", final_text)
+
+            #At the beginning of each IFRS there is the name of the IFRS doc
+        final_text = re.sub(r"(_title_.*)\n_title_(.*)", r"\1\2",final_text)
+        final_text = re.sub(r"_title_(.*)\n(_title_.*)",r"_doc_title_\1\n\2",final_text)
+
+            #Format the definition page
+        final_text = re.sub(r"(Appendix A :.*)",r"_title_\1",final_text)
+
+    return final_text
