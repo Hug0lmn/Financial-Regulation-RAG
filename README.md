@@ -3,14 +3,18 @@
 This repository investigates the application of Retrieval-Augmented Generation (RAG) to banking and financial regulatory texts.  
 The goal is to build a clean, reproducible baseline pipeline that can later be expanded with more advanced retrieval, preprocessing, and prompting techniques.  
 
-Current focus: **IFRS 9** as the initial regulatory corpus.  
+Current focus: **IFRS 7/9/13** as the initial regulatory corpus.  
 
 ---  
+
+## Notes  
+
+Regarding RAG (not yet organized): https://www.notion.so/RAG-informations-advices-2b111b4b8f9c80d48216fd05e8aefd92?source=copy_link  
 
 ## Current Capabilities (Baseline)  
 
 ### 1. Preprocessing & Cleaning  
-- Strong text cleaning of IFRS documents.  
+- Automatic preprocessing of IFRS template documents.  
 - Early restructuring attempts to better align sections, subparagraphs, lists, and definitions.  
 
 ### 2. Chunking & Retrieval  
