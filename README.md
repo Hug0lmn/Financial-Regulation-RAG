@@ -3,7 +3,7 @@
 This repository investigates the application of Retrieval-Augmented Generation (RAG) to banking and financial regulatory texts.  
 The goal is to build a clean, reproducible baseline pipeline that can later be expanded with more advanced retrieval, preprocessing, and prompting techniques.  
 
-Current focus: **IFRS 7/9/13** as the initial regulatory corpus.  
+Current focus: **IFRS 7/9/13** as the initial regulatory corpus and english corpus.  
 
 ---  
 
@@ -36,7 +36,7 @@ This baseline exists so that future improvements can be evaluated against a stab
 - Slow generation.
 - Cleaning logic still fragile and sensitive to document structure.  
 - Chunking not yet optimized.  
-- Embedding and retrieval rely on simple similarity models.  
+- Embedding and retrieval rely on similarity models.  
 - Prompting strategy is intentionally minimal.  
 
 These limitations form the basis of the roadmap for future work.  
@@ -46,7 +46,7 @@ These limitations form the basis of the roadmap for future work.
 ## Next Steps  
 
 ### 1. Expand and Diversify the Regulatory Corpus  
-- Add IFRS 7, Basel II/III/IV, EBA Guidelines, and local regulatory frameworks.  
+- Add Basel II/III/IV, EBA Guidelines, and local regulatory frameworks.  
 - Improve the cleaning pipeline with modular components.  
 - Reduce user-dependent preprocessing decisions by detecting text structure.  
 
