@@ -1,2 +1,0 @@
-- Use of fitz to get pdf to text, after a few tests and advancements. See that tables aren't properly retrieved.  
-- Switch to pdfplumber
