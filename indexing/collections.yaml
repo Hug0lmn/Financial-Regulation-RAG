@@ -1,0 +1,7 @@
+models:
+- name: rag_financial
+  dense:
+    name: BAAI/bge-small-en-v1.5
+    size: 384
+  sparse:
+    name: Qdrant/bm25

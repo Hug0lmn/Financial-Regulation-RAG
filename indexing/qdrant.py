@@ -3,6 +3,7 @@ import uuid
 
 from dotenv import load_dotenv
 from qdrant_client import QdrantClient, models
+from indexing.collections_config import store_info_collections
 
 def load_qdrant_client() :
     """
@@ -61,10 +62,13 @@ def create_qdrant_collection(client, collection_name : str, model_dense = None, 
 
     try :
         if client.get_collection(collection_name=collection_name) :
-            return ValueError(f"A collection already exist with {collection_name}") 
+            print(ValueError(f"A collection already exist with {collection_name}") )
+            return 
+        #I know that there is a parameter in create_collection to overwrite if existing, but I prefer to be explicit here
     except :
 
         mode = guess_collection_type(model_dense, model_sparse) #Guess type
+        collections_config = store_info_collections(collection_name, model_dense, model_sparse)
 
         if mode == "dense" :             
             client.create_collection(collection_name=collection_name,
@@ -83,18 +87,8 @@ def create_qdrant_collection(client, collection_name : str, model_dense = None, 
                                 })
         else : 
             raise ValueError(f"Unsupported mode '{mode}'. Use one of: dense, sparse, both.")
-
-def upload_points(list_docs : list, vector_store) :
-    """
-    Build PointStructs from chunked_text and provided vectors, then upsert into the collection.
-    """
-
-    #Add documents perform automatically the embedding and upload to Qdrant, no need to call specific embedding functions
-    #I know that currently the ids are random and doesn't allow easy retrieval and rewriting, this will be fixed later by modifying the chunking function to return also metadata with unique identifiers
-    ids = [uuid.uuid4()  for text in list_docs]
-    vector_store.add_documents(documents=list_docs, ids=ids)    
-    
-    return (list_docs,ids)
+        
+        return collections_config
 
 def delete_collection(client, collection_name : str = None) :
     """
