@@ -42,6 +42,10 @@ These limitations form the basis of the roadmap for future work.
 
 ## Next Steps  
 
+### Next direct steps  
+- Get reliable LLM answers end-to-end so the RAG outputs meet your quality bar.  
+- Pick a stronger, hardware-friendly model (and tweak the RAG) to lift answer quality.  
+
 ### 1. Expand and Diversify the Regulatory Corpus  
 - Add Basel II/III/IV, EBA Guidelines, and local regulatory frameworks.  
 - Improve the cleaning pipeline with modular components and specialized structure.  
