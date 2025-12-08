@@ -33,11 +33,8 @@ This baseline exists so that future improvements can be evaluated against a stab
 
 ## Limitations (Intentional at This Stage)  
 
-- Slow generation.
-- Cleaning logic still fragile and sensitive to document structure.  
-- Chunking not yet optimized.  
-- Embedding and retrieval rely on similarity models.  
-- Prompting strategy is intentionally minimal.  
+- Slow generation (dependant on hardware). 
+- Prompting strategy not optimal and result not sufficient.  
 
 These limitations form the basis of the roadmap for future work.  
 
@@ -47,8 +44,7 @@ These limitations form the basis of the roadmap for future work.
 
 ### 1. Expand and Diversify the Regulatory Corpus  
 - Add Basel II/III/IV, EBA Guidelines, and local regulatory frameworks.  
-- Improve the cleaning pipeline with modular components.  
-- Reduce user-dependent preprocessing decisions by detecting text structure.  
+- Improve the cleaning pipeline with modular components and specialized structure.  
 
 ### 2. Develop a Streamlit Interface  
 - Simple UI to query the corpus and visualize retrieval results.  
@@ -57,7 +53,6 @@ These limitations form the basis of the roadmap for future work.
 
 ### 3. Enhance Retrieval Quality  
 - Test modern embedding models.  
-- Hybrid retrieval: dense + sparse (BM25).  
 - Explore other chunking methods.  
 - ...  
 
