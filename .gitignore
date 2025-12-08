@@ -1,2 +1,5 @@
 .rag
+.env
 test.ipynb
+API_keys.txt
+__pycache__/
