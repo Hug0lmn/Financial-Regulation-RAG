@@ -1,7 +1,19 @@
 models:
-- name: rag_financial
+- name: RAG
   dense:
-    name: BAAI/bge-small-en-v1.5
-    size: 384
+    name: BAAI/bge-base-en-v1.5
+    size: 768
   sparse:
-    name: Qdrant/bm25
+    name: Qdrant/bm42-all-minilm-l6-v2-attentions
+- name: RAG
+  dense:
+    name: BAAI/bge-base-en-v1.5
+    size: 768
+  sparse:
+    name: Qdrant/bm42-all-minilm-l6-v2-attentions
+- name: RAG
+  dense:
+    name: BAAI/bge-base-en-v1.5
+    size: 768
+  sparse:
+    name: Qdrant/bm42-all-minilm-l6-v2-attentions
