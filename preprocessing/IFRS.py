@@ -214,9 +214,46 @@ def extract_text_from_ifrs_lines(page) :
 
     return global_
 
+def lower_part_instance(text) :
+
+    """
+    This function will be used on IFRS when there are chapter name + part name, change part name to lower level part (currently pb because chapter name + part name at same level)
+    """
+
+    new_text = []
+    prev_start = 0
+
+    for elem in re.finditer(r"_title_Chapter.*\n",text) :
+    
+        if prev_start == 0 : 
+            prev_start = elem.end()
+            new_text.append(text[:elem.end()])
+            continue
+
+        current_part = text[prev_start:elem.start()]
+        current_part = re.sub("subsection","subsubsection", current_part)
+        current_part = re.sub("subtitle","subsection", current_part)
+        current_part = re.sub("title","subtitle", current_part)
+        new_text.append(current_part)
+        new_text.append(text[elem.start():elem.end()]) #_title_Chapter
+        prev_start = elem.end()
+
+    #Last part 
+    last_part = text[prev_start:]
+    last_part = re.sub("subsection","subsubsection", last_part)
+    last_part = re.sub("subtitle","subsection", last_part)
+    last_part = re.sub("title","subtitle", last_part)
+    new_text.append(last_part)
+    
+    return "".join(new_text)
+
 def global_process_ifrs(file_path) :
 
     #First assume every page contains only structured texts with one column 
+    global text_blocks
+    global words
+    global appendix_b_text
+    global text_final 
     tables = []
     text_blocks = []
     words = []
@@ -243,19 +280,12 @@ def global_process_ifrs(file_path) :
     
     
     text_final = []
+    appendix_b_text = []
     beginning = False
     definitions_ = False
+    appendix_b = False
 
     for j in range(len(text_blocks)) :
-
-        if "IFRS_9" in str(file_path) :
-            if j == 73 :
-                text_final.append(ifrs_9_seventy_four)
-                continue
-
-        if j in tables_ :
-            text_final.append(transform_table_to_use(pdf, j, text_blocks, tables))
-            continue
 
         if re.findall(r"Objective\n",text_blocks[j]) :
             beginning = True
@@ -263,40 +293,80 @@ def global_process_ifrs(file_path) :
             definitions_ = True
         elif re.findall(r"Appendix B\nApplication guidance",text_blocks[j]) :
             definitions_ = False
+            appendix_b = True
         elif re.findall(r"Appendix [A-Z]\nAmendments ",text_blocks[j]) :
             beginning = False
-    
+            appendix_b = False
 
-        if beginning : 
-            if definitions_ :
+        
+        if "IFRS_9" in str(file_path) :
+            if j == 73 :
+                if appendix_b :
+                    appendix_b_text.append(ifrs_9_seventy_four)
+                else : 
+                    text_final.append(ifrs_9_seventy_four)
+                continue
+
+
+        if beginning :
+            # Handle tables - append to appropriate list based on current section
+            if j in tables_ :
+                table_content = transform_table_to_use(pdf, j, text_blocks, tables)
+                if appendix_b :
+                    appendix_b_text.append(table_content)
+                else :
+                    text_final.append(table_content)
+            elif definitions_ :
                 text_final.append(appendix_def(doc[j]).strip())
+            elif appendix_b :
+                appendix_b_text.append(extract_text_from_ifrs_lines(words[j]).strip())
             else :
                 text_final.append(extract_text_from_ifrs_lines(words[j]).strip())
 
+    # Process main text (with Appendix A)
     for j in range(len(text_final)) :
             #Some part are deleted, it has to do with new version of the file
-        text_final[j] = re.sub(r'\n.*\[Deleted\].*\n',"\n",text_final[j]) 
+        text_final[j] = re.sub(r'\n.*\[Deleted\].*\n',"\n",text_final[j])
         text_final[j] = re.sub(r'\n.*\[deleted\].*\n',"\n",text_final[j])
 
         text_final[j] = re.sub(r"\nIFRS \d+ \n", "", text_final[j])
         text_final[j] = re.sub(r".*IFRS Foundation.*", "", text_final[j])
 
-        final_text = "\n".join(text_final)
-            #If a part isn't finished at the end of a page
-        final_text = re.sub(r"([a-z]+)\n([a-z]+)", r"\1 \2",final_text)
-            #If a part isn't finished at the end of a page, while there is a footnote between the two 
-        final_text = re.sub(r"([a-z])\s*\n(_footnote_.*\n)([a-z].*\n)", r"\1\3\2",final_text)
+    final_text = "\n".join(text_final)
+        #If a part isn't finished at the end of a page
+    final_text = re.sub(r"([a-z]+)\n([a-z]+)", r"\1 \2",final_text)
+        #If a part isn't finished at the end of a page, while there is a footnote between the two
+    final_text = re.sub(r"([a-z])\s*\n(_footnote_.*\n)([a-z].*\n)", r"\1\3\2",final_text)
 
-        final_text = re.sub(r"\.\.\.continued|\n_footnote_continued\.\.\.\n","", final_text)
+    final_text = re.sub(r"\.\.\.continued|\n_footnote_continued\.\.\.\n","", final_text)
 
-            #Delete double or more \n
-        final_text = re.sub(r"\n{2,}","\n", final_text)
+        #Delete double or more \n
+    final_text = re.sub(r"\n{2,}","\n", final_text)
 
-            #At the beginning of each IFRS there is the name of the IFRS doc
-        final_text = re.sub(r"(_title_.*)\n_title_(.*)", r"\1\2",final_text)
-        final_text = re.sub(r"_title_(.*)\n(_title_.*)",r"_doc_title_\1\n\2",final_text)
+        
+    #At the beginning of each IFRS there is the name of the IFRS doc
+    final_text = re.sub(r"(_title_.*)\n_title_[A-Z](.*)\n", r"",final_text)
+    
+    #IFRS_9 (not 7 and 13, contains chapter name and part name)
+    #Part name is count as a title name from it's disposition so need to lower every part by 1 instance
+    if len(re.findall(r"_title_Chapter.*",final_text)) :
+        final_text = lower_part_instance(final_text)
+    
+    #Format the definition page
+    final_text = re.sub(r"(Appendix A :.*)",r"_title_\1",final_text)
 
-            #Format the definition page
-        final_text = re.sub(r"(Appendix A :.*)",r"_title_\1",final_text)
+    # Process Appendix B text
+    for j in range(len(appendix_b_text)) :
+        appendix_b_text[j] = re.sub(r'\n.*\[Deleted\].*\n',"\n",appendix_b_text[j])
+        appendix_b_text[j] = re.sub(r'\n.*\[deleted\].*\n',"\n",appendix_b_text[j])
+        appendix_b_text[j] = re.sub(r"\nIFRS \d+ \n", "", appendix_b_text[j])
+        appendix_b_text[j] = re.sub(r".*IFRS Foundation.*", "", appendix_b_text[j])
 
-    return final_text
+    appendix_b_final = "\n".join(appendix_b_text)
+    appendix_b_final = re.sub(r"(.*Appendix B) \n_title_(.*)\n.*\n", r"", appendix_b_final)
+    appendix_b_final = re.sub(r"([a-z]+)\n([a-z]+)", r"\1 \2", appendix_b_final)
+    appendix_b_final = re.sub(r"([a-z])\s*\n(_footnote_.*\n)([a-z].*\n)", r"\1\3\2", appendix_b_final)
+    appendix_b_final = re.sub(r"\.\.\.continued|\n_footnote_continued\.\.\.\n","", appendix_b_final)
+    appendix_b_final = re.sub(r"\n{2,}","\n", appendix_b_final)
+
+    return final_text, appendix_b_final

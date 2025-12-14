@@ -23,7 +23,7 @@ def chunking_text(path: str | None = None, chunk_size: int = 800, chunk_overlap:
     splitter = RecursiveCharacterTextSplitter(
         chunk_size=chunk_size,
         chunk_overlap=chunk_overlap,
-        separators=["\n\n", "\n", ". ", "; "],
+        separators=["\n\n", "\n"],
     )
 
     docs = []

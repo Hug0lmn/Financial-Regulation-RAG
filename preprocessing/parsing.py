@@ -20,13 +20,19 @@ def split_numbered_items(block, item_pattern):
 
     return items
 
-def parse(text):
+def parse(text, name, appendix = False):
 
-    item_pattern = re.compile(r"^(\d{1,3}[A-Z]{0,3})[\.]?\s+")
+    #Item pattern detect a new mini paragraph
+    item_pattern = re.compile(r"^([A-Z]?\d+[A-Z]?\.?\d*\.?\d*)\s+") #Lot of optional but need to take into account 13D / 3.2.1 / 2.3 / B.3.1 etc...
     marker_pat = re.compile(r"^(_title_|_subtitle_|_subsection_|_subsubsection_)(.*)$")
 
-    title_doc = re.findall("_doc_title_(.*)", text)[0]
     text = re.sub("_doc_title_.*\n","",text)
+    source = name
+
+    if appendix :
+        txt_type = "appendix"
+    else :
+        txt_type = "main"
     
     current_title = None
     current_subtitle = None
@@ -44,7 +50,8 @@ def parse(text):
             items = split_numbered_items(block,item_pattern)
             for it in items:
                 final.append({
-                    "doc_title": title_doc,          # <-- NEW FIELD
+                    "source": source, 
+                    "type": txt_type, 
                     "title": current_title,
                     "subtitle": current_subtitle,
                     "subsection": current_subsection,
@@ -54,11 +61,12 @@ def parse(text):
         buffer.clear()
 
     for line in lines:
-        m = marker_pat.match(line)
-        if m:
+        m = marker_pat.match(line) 
+        if m: #If new part detected then run flush buffer
             flush_buffer()
             marker, label = m.group(1), m.group(2).strip()
-            if marker == "_title_":
+            #Replace part by new part, affect only downstream parts
+            if marker == "_title_": 
                 current_title = label
                 current_subtitle = None
                 current_subsection = None
