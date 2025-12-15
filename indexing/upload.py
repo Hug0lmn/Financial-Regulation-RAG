@@ -1,4 +1,5 @@
 import uuid
+from tqdm import tqdm
 
 # Custom namespace UUID for this project (you can change this to any UUID you want)
 CHUNK_NAMESPACE = uuid.UUID('12945478-1334-5278-1234-567292345678')
@@ -43,17 +44,11 @@ def create_chunk_id(metadata: dict, max_len: int = 4) -> uuid.UUID:
     return uuid.uuid5(CHUNK_NAMESPACE, string_id)
 
 
-def upload_points(vector_store, list_docs : list, batch_size: int = 100) :
-    """
-    Build PointStructs from chunked_text and provided vectors, then upsert into the collection.
-    Uses metadata-based IDs for easy reconstruction and retrieval.
-    """
+def upload_points(vector_store, list_docs : list, batch_size: int = 50) :
 
-    # Create IDs from metadata instead of random UUIDs
     ids = [create_chunk_id(doc.metadata) for doc in list_docs]
 
-    for i in range(0, len(ids), batch_size):
-        print(f"{i} / {len(ids)}")
+    for i in tqdm(range(0, len(ids), batch_size), desc="Uploading batches"):
         chunk = list_docs[i:i+batch_size]
         batch_ids = ids[i:i+batch_size]
         vector_store.add_documents(
