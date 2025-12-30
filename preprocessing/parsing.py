@@ -58,6 +58,7 @@ def parse(text, name, appendix = False):
                     "subsubsection": current_subsub,
                     "content": it
                 })
+
         buffer.clear()
 
     for line in lines:
