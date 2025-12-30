@@ -15,6 +15,22 @@ def explore_collections_yaml() :
         collection_config = yaml.safe_load(f)
         return collection_config
     
+def del_collection_yaml(collection_name) :
+
+    path = Path(__file__).resolve().parent / "collections.yaml"
+
+    #load yaml file
+    with open(path) as f :
+        collection_config = yaml.safe_load(f)
+
+    #Check each iteration of models
+    for idx, col in enumerate(collection_config["models"]) : 
+        if col["name"] == collection_name :
+            collection_config["models"].pop(idx)
+            return True
+
+    return False
+    
 def store_info_collections(collection_name : str, model_dense = None, model_sparse = None) :
 
     """

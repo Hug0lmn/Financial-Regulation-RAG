@@ -1,5 +1,7 @@
 from tqdm import tqdm
 from langchain_core.documents import Document
+from pathlib import Path
+import json
 
 def transfo_list_into_Document(list_chunk) :
     
@@ -18,11 +20,17 @@ def transfo_list_into_Document(list_chunk) :
                        }) 
 
         docs.append(doc)
+        
         list_ids.append(elem.get("qdrant_id"))
     
     return docs, list_ids
 
-def upload_points(vector_store, list_docs : list, batch_size: int = 50) :
+def upload_points(vector_store, batch_size: int = 50) :
+    
+    file = Path(__file__).resolve().parent.parent / "data" / "metadatas"
+
+    with open(file, "r", encoding="utf-8") as f:
+        list_docs = json.load(f)
 
     docs, ids = transfo_list_into_Document(list_docs)
 

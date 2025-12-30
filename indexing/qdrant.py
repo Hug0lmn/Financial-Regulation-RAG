@@ -3,7 +3,7 @@ import uuid
 
 from dotenv import load_dotenv
 from qdrant_client import QdrantClient, models
-from indexing.collections_config import store_info_collections
+from indexing.collections_config import store_info_collections, del_collection_yaml
 
 def load_qdrant_client() :
     """
@@ -95,13 +95,23 @@ def delete_collection(client, collection_name : str = None) :
     List collections, prompt for indices (hyphen-separated), and delete selected collections.
     If collection_name is None, list all collections and prompt user for deletion.
     """
-    
+
+    result_qdrant = False
+    result_yaml = False
+
     if collection_name :
-        if client.delete_collection(collection_name) : 
-            print(f"Deleted successfully : {collection_name}")
+
+        result_qdrant = client.delete_collection(collection_name) #True if deleted else False
+        
+        if result_qdrant : #Delete yaml only if collection deleted in qdrant
+            result_yaml = del_collection_yaml(collection_name)
+
+        if result_yaml : #Implicit result_qdrant = True
+            print(f"Deleted successfully on qdrant and yaml: {collection_name}")
+        elif result_qdrant and not result_yaml: 
+            print(f"Deleted successfully on qdrant but yaml failed: {collection_name}")
         else :
             print(f"Not deleted : {collection_name}")
-        return
     
     else :
         all_col = client.get_collections()
@@ -110,17 +120,27 @@ def delete_collection(client, collection_name : str = None) :
         print(f"List col : {list_col}")
         col_nb = input(fr"What collection would you want to delete (Type exact position, for multiple deletion separate by -)")
 
-        cols = col_nb.split("-")
+        if col_nb : #If answer not empty
+            cols = col_nb.split("-")
     
-        if len(cols) <= len(list_col) :
-            for col in cols :
-                col = int(col)
+            if len(cols) <= len(list_col) :
+                for col in cols :
+
+                    result_qdrant = False
+                    result_yaml = False
+                    
+                    col = int(col)
             
-                #Send back False if not deleted
-                if client.delete_collection(list_col[col]) : 
-                    print(f"Deleted successfully : {list_col[col]}")
-                else :
-                    print(f"Not deleted : {list_col[col]}")
+                    #Send back False if not deleted
+                    if client.delete_collection(list_col[col]) :
+
+                        if del_collection_yaml(list_col[col]) :
+                            print(f"Deleted successfully (qdrant & yaml): {list_col[col]}")
+                        else :
+                            print(f"Deleted successfully (qdrant): {list_col[col]}")
+
+                    else :
+                        print(f"Not deleted : {list_col[col]}")
     
-        else : 
-            print("Listed more than available nb of collection")
+            else : 
+                print("Listed more than available nb of collection")
