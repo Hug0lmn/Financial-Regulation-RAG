@@ -1,11 +1,10 @@
 import os
-import uuid
 
 from dotenv import load_dotenv
 from qdrant_client import QdrantClient, models
 from indexing.collections_config import store_info_collections, del_collection_yaml
 
-def load_qdrant_client() :
+def load_qdrant_client() -> QdrantClient:
     """
     Load and return a QdrantClient using QDRANT_API_KEY and QDRANT_URL from .env.
     """
@@ -61,12 +60,11 @@ def create_qdrant_collection(client, collection_name : str, model_dense = None, 
     """
 
     try :
-        if client.get_collection(collection_name=collection_name) :
-            print(ValueError(f"A collection already exist with {collection_name}") )
-            return 
+        if client.get_collection(collection_name) :
+            raise ValueError(f"A collection already exists with {collection_name}") 
         #I know that there is a parameter in create_collection to overwrite if existing, but I prefer to be explicit here
-    except :
 
+    except :
         mode = guess_collection_type(model_dense, model_sparse) #Guess type
         collections_config = store_info_collections(collection_name, model_dense, model_sparse)
 
@@ -125,11 +123,11 @@ def delete_collection(client, collection_name : str = None) :
     
             if len(cols) <= len(list_col) :
                 for col in cols :
-
-                    result_qdrant = False
-                    result_yaml = False
                     
-                    col = int(col)
+                    try :
+                        col = int(col)
+                    except : 
+                        raise TypeError("col value not convertible to int")
             
                     #Send back False if not deleted
                     if client.delete_collection(list_col[col]) :

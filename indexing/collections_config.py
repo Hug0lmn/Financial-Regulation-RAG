@@ -24,9 +24,13 @@ def del_collection_yaml(collection_name) :
         collection_config = yaml.safe_load(f)
 
     #Check each iteration of models
-    for idx, col in enumerate(collection_config["models"]) : 
+    for idx, col in enumerate(collection_config) : 
         if col["name"] == collection_name :
-            collection_config["models"].pop(idx)
+            collection_config.pop(idx)
+
+            #Save back 
+            with open(path, "w") as f :
+                yaml.safe_dump(collection_config, f, sort_keys=False)
             return True
 
     return False
@@ -63,8 +67,12 @@ def store_info_collections(collection_name : str, model_dense = None, model_spar
 
             with open(file) as f:
                 collection_config = yaml.safe_load(f)
-            
-            collection_config["models"].append(COLLECTIONS_CONFIG) #No chance that the collection name already exists, so we can append it directly
+
+            if collection_config : #Not empty
+                collection_config.append(COLLECTIONS_CONFIG) #No chance that the collection name already exists, so we can append it directly
+            else :
+                collection_config = []
+                collection_config.append(COLLECTIONS_CONFIG)
             
             with open(file, "w") as f:
                 yaml.safe_dump(collection_config, f, sort_keys=False)
