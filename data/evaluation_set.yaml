@@ -1,54 +1,50 @@
 - question: "What is the main objective of IFRS 9?"
   answer: "The objective of this Standard is to establish principles for the financial reporting of financial assets and financial liabilities that will present relevant and useful information to users of financial statements for their assessment of the amounts, timing and uncertainty of an entity's future cash flows."
-  location: "8051c66f-642b-58d5-929d-416bcb122d3a"
+  location: "273a6d6c-be57-55d9-907c-8ae6feacc203"
 
 - question: "Under what conditions should a financial asset be measured at amortised cost?"
   answer: "A financial asset shall be measured at amortised cost if both of the following conditions are met: (a) the financial asset is held within a business model whose objective is to hold financial assets in order to collect contractual cash flows and (b) the contractual terms of the financial asset give rise on specified dates to cash flows that are solely payments of principal and interest on the principal amount outstanding."
-  location: "c4e3bd21-6b29-502b-99eb-61e9b2c2f2c9"
+  location: "ec999698-e714-5eed-a337-22acfd6ecfda"
 
 - question: "When should an entity derecognise a financial asset?"
   answer: "An entity shall derecognise a financial asset when, and only when: (a) the contractual rights to the cash flows from the financial asset expire, or (b) it transfers the financial asset as set out in paragraphs 3.2.4 and 3.2.5 and the transfer qualifies for derecognition in accordance with paragraph 3.2.6."
-  location: "11d2953f-28a5-57cd-bf59-18a29af3a07c"
+  location: "2a0a044c-2f77-51ec-8856-179ada7f4218"
 
 - question: "What is the rebuttable presumption regarding significant increase in credit risk for past due payments?"
   answer: "Regardless of the way in which an entity assesses significant increases in credit risk, there is a rebuttable presumption that the credit risk on a financial asset has increased significantly since initial recognition when contractual payments are more than 30 days past due. An entity can rebut this presumption if the entity has reasonable and supportable information that is available without undue cost or effort, that demonstrates that the credit risk has not increased significantly since initial recognition even though the contractual payments are more than 30 days past due."
-  location: "e2730182-d1ea-5aea-9ade-70df32b493a8"
+  location: "152bbb2f-98ad-578a-9b21-98fb90769d7f"
 
 - question: "What are the three types of hedging relationships defined in IFRS 9?"
   answer: "There are three types of hedging relationships: (a) fair value hedge: a hedge of the exposure to changes in fair value of a recognised asset or liability or an unrecognised firm commitment, or a component of any such item, that is attributable to a particular risk and could affect profit or loss. (b) cash flow hedge: a hedge of the exposure to variability in cash flows that is attributable to a particular risk associated with all, or a component of, a recognised asset or liability (such as all or some future interest payments on variable-rate debt) or a highly probable forecast transaction, and could affect profit or loss. (c) hedge of a net investment in a foreign operation as defined in IAS 21."
-  location: ["861c6134-bad1-5438-aa64-3387fd6d275a", "721199e2-dc3f-56a7-9adf-81366750b4e7"]
+  location: "622739b2-fcd9-562e-8859-6b27fdf4241f"
 
 - question: "How should expected credit losses be measured according to IFRS 9?"
   answer: "An entity shall measure expected credit losses of a financial instrument in a way that reflects: (a) an unbiased and probability-weighted amount that is determined by evaluating a range of possible outcomes; (b) the time value of money; and (c) reasonable and supportable information that is available without undue cost or effort at the reporting date about past events, current conditions and forecasts of future economic conditions."
-  location: "2f80e9c4-b7d5-52af-b07e-bc5a44218170"
+  location: "50e65153-1c4f-547f-971c-2dd91935b6a4"
 
 - question: "When are lease receivables subject to the impairment requirements of IFRS 9?"
   answer: "finance lease receivables (ie net investments in finance leases) and operating lease receivables recognised by a lessor are subject to the derecognition and impairment requirements of this Standard"
-  location: "9c77b3b1-cc63-5d0c-9f46-a4743a673581"
-
-- question: "What is the effective interest method?"
-  answer: "The method that is used in the calculation of the amortised cost of a financial asset or a financial liability and in the allocation and recognition of the interest revenue or interest expense in profit or loss over the relevant period."
-  location: "Line 620, Appendix A - Defined terms"
+  location: "4a3362ee-765f-5bcb-bf3f-9d423ecaceaa"
 
 - question: "When should an entity discontinue hedge accounting?"
   answer: "An entity shall discontinue hedge accounting prospectively only when the hedging relationship (or a part of a hedging relationship) ceases to meet the qualifying criteria (after taking into account any rebalancing of the hedging relationship, if applicable). This includes instances when the hedging instrument expires or is sold, terminated or exercised."
-  location: "861c6134-bad1-5438-aa64-3387fd6d275a"
+  location: "830961e5-0245-5950-bed7-6b37e593ed91"
 
 - question: "Which buy/sell contracts for non-financial items are treated as financial instruments?"
   answer: "This Standard shall be applied to those contracts to buy or sell a non-financial item that can be settled net in cash or another financial instrument, or by exchanging financial instruments, as if the contracts were financial instruments, with the exception of contracts that were entered into and continue to be held for the purpose of the receipt or delivery of a non-financial item in accordance with the entity's expected purchase, sale or usage requirements."
-  location: "cc2568c5-3bac-5adb-94d2-7c6f3fdeb5a9"
+  location: "4c1571a5-b085-5299-a8f4-1d67ca49a1b6"
 
 - question: "When can an entity designate a financial asset at fair value through profit or loss to avoid an accounting mismatch?"
   answer: "Despite paragraphs 4.1.1–4.1.4, an entity may, at initial recognition, irrevocably designate a financial asset as measured at fair value through profit or loss if doing so eliminates or significantly reduces a measurement or recognition inconsistency (sometimes referred to as an 'accounting mismatch') that would otherwise arise from measuring assets or liabilities or recognising the gains and losses on them on different bases"
-  location: "ba8681ad-c665-5137-bc3d-34cb6b1de9a8"
+  location: "e6b2d02b-01ce-5ab4-9788-7a5d162358ba"
 
 - question: "When should lifetime expected credit losses be measured instead of 12-month expected credit losses?"
   answer: "Subject to paragraphs 5.5.13–5.5.16, at each reporting date, an entity shall measure the loss allowance for a financial instrument at an amount equal to the lifetime expected credit losses if the credit risk on that financial instrument has increased significantly since initial recognition."
-  location: "b6f20162-360e-55a9-8d27-03a6c4351296"
+  location: "ba5fb0fb-73be-5da3-a92a-ca3e444ca9c7"
 
 - question: "What is the simplified approach for trade receivables, contract assets and lease receivables?"
   answer: "Despite paragraphs 5.5.3 and 5.5.5, an entity shall always measure the loss allowance at an amount equal to lifetime expected credit losses for: (a) trade receivables or contract assets that result from transactions that are within the scope of IFRS 15, and that: (i) do not contain a significant financing component in accordance with IFRS 15 (or when the entity applies the practical expedient in accordance with paragraph 63 of IFRS 15); or (ii) contain a significant financing component in accordance with IFRS 15, if the entity chooses as its accounting policy to measure the loss allowance at an amount equal to lifetime expected credit losses. That accounting policy shall be applied to all such trade receivables or contract assets but may be applied separately to trade receivables and contract assets. (b) lease receivables that result from transactions that are within the scope of IFRS 16, if the entity chooses as its accounting policy to measure the loss allowance at an amount equal to lifetime expected credit losses. That accounting policy shall be applied to all lease receivables but may be applied separately to finance and operating lease receivables."
-  locations: ["3971cff4-f7f4-5bc8-b80b-f0e56c5778e3","a132ceb0-aae1-533d-834f-9e69a2284434", "28001a8e-08e1-5b52-876f-7ba12e20d2d0"]
+  location: "18c1d44b-f1af-552b-999d-3bca1e4c2fad"
 
 - question: "When are financial assets reclassified, and are financial liabilities ever reclassified?"
   answer: "When, and only when, an entity changes its business model for managing financial assets it shall reclassify all affected financial assets in accordance with paragraphs 4.1.1–4.1.4. [...] An entity shall not reclassify any financial liability."
