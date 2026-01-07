@@ -3,3 +3,6 @@
 test.ipynb
 API_keys.txt
 __pycache__/
+data/create_evaluation.py
+data/evaluation_couples.yaml
+retriever/evaluation.py

@@ -42,11 +42,10 @@ def load_vector_store_from_config(
         ValueError: If collection not found, no embeddings configured, or invalid mode
         FileNotFoundError: If config file doesn't exist
     """
-    # Load client if not provided
+
     if client is None:
         client = load_qdrant_client()
 
-    # Load config
     config_file_path = Path(config_path)
     if not config_file_path.exists():
         raise FileNotFoundError(f"Config file not found: {config_path}")
@@ -56,19 +55,18 @@ def load_vector_store_from_config(
 
     # Find collection config
     model_config = None
-    for model in config.get("models", []):
+    for model in config :
         if model.get("name") == collection_name:
             model_config = model
             break
 
     if model_config is None:
-        available = [m["name"] for m in config.get("models", [])]
+        available = [m["name"] for m in config]
         raise ValueError(
             f"Collection '{collection_name}' not found in config. "
             f"Available collections: {', '.join(available)}"
         )
 
-    # Load embedding models based on force_retrieval_mode or config
     model_dense = None
     model_sparse = None
 
@@ -81,7 +79,6 @@ def load_vector_store_from_config(
                 "Must be 'dense', 'sparse', or 'hybrid'."
             )
 
-        # Load only required models based on forced mode
         if force_mode in ["dense", "hybrid"]:
             if model_config.get("dense") is not None:
                 dense_name = model_config["dense"]["name"]
@@ -96,7 +93,6 @@ def load_vector_store_from_config(
             elif force_mode == "sparse":
                 raise ValueError(f"Sparse embeddings not configured for '{collection_name}'")
     else:
-        # Load all available models from config
         if model_config.get("dense") is not None:
             dense_name = model_config["dense"]["name"]
             model_dense = FastEmbedEmbeddings(model_name=dense_name)
@@ -105,9 +101,7 @@ def load_vector_store_from_config(
             sparse_name = model_config["sparse"]["name"]
             model_sparse = FastEmbedSparse(model_name=sparse_name)
 
-    # Determine retrieval mode
     if force_retrieval_mode:
-        # Use forced mode
         mode_map = {
             "dense": RetrievalMode.DENSE,
             "sparse": RetrievalMode.SPARSE,
@@ -125,7 +119,6 @@ def load_vector_store_from_config(
         else:
             raise ValueError(f"No embedding models configured for collection '{collection_name}'")
 
-    # Create vector store
     vector_store = QdrantVectorStore(
         client=client,
         collection_name=collection_name,
@@ -135,6 +128,6 @@ def load_vector_store_from_config(
     )
 
     mode_suffix = f" (forced: {force_retrieval_mode})" if force_retrieval_mode else ""
-    print(f"✓ Vector store loaded: {collection_name} (mode: {retrieval_mode.value}{mode_suffix})")
+#    print(f"✓ Vector store loaded: {collection_name} (mode: {retrieval_mode.value}{mode_suffix})")
 
     return vector_store

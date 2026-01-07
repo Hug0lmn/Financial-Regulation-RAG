@@ -22,7 +22,7 @@ def split_numbered_items(block, item_pattern):
     if current_subpart : #Add the last subpart of the block, because there is no pattern at the end
         all_subparts.append("".join(current_subpart).strip())
 
-    return "\n\n".join(all_subparts)
+    return all_subparts#"\n\n".join(all_subparts)
 
 def parse(text, name, appendix = False):
 
@@ -51,18 +51,19 @@ def parse(text, name, appendix = False):
     def flush_buffer():
         if buffer:
             block = "\n".join(buffer).strip()
-#            items = split_numbered_items(block,item_pattern)
-#            for it in items:
-            block = split_numbered_items(block,item_pattern)
-            final.append({
+            items = split_numbered_items(block,item_pattern)
+
+            for it in items:
+#            block = split_numbered_items(block,item_pattern)
+                final.append({
                 "source": source, 
                 "type": txt_type, 
                 "title": current_title,
                 "subtitle": current_subtitle,
                 "subsection": current_subsection,
                 "subsubsection": current_subsub,
-                "content": block
-            })
+                "content": it
+             })
 
         buffer.clear()
 

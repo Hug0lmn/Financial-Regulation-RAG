@@ -4,19 +4,19 @@
 
 - question: "Under what conditions should a financial asset be measured at amortised cost?"
   answer: "A financial asset shall be measured at amortised cost if both of the following conditions are met: (a) the financial asset is held within a business model whose objective is to hold financial assets in order to collect contractual cash flows and (b) the contractual terms of the financial asset give rise on specified dates to cash flows that are solely payments of principal and interest on the principal amount outstanding."
-  location: "c8d96481-6f16-5fab-b602-8768e6983a03"
+  location: "ec999698-e714-5eed-a337-22acfd6ecfda"
 
 - question: "When should an entity derecognise a financial asset?"
   answer: "An entity shall derecognise a financial asset when, and only when: (a) the contractual rights to the cash flows from the financial asset expire, or (b) it transfers the financial asset as set out in paragraphs 3.2.4 and 3.2.5 and the transfer qualifies for derecognition in accordance with paragraph 3.2.6."
-  location: "bc03fb5f-7c51-52eb-9001-7972f2230c5f"
+  location: "2a0a044c-2f77-51ec-8856-179ada7f4218"
 
 - question: "What is the rebuttable presumption regarding significant increase in credit risk for past due payments?"
   answer: "Regardless of the way in which an entity assesses significant increases in credit risk, there is a rebuttable presumption that the credit risk on a financial asset has increased significantly since initial recognition when contractual payments are more than 30 days past due. An entity can rebut this presumption if the entity has reasonable and supportable information that is available without undue cost or effort, that demonstrates that the credit risk has not increased significantly since initial recognition even though the contractual payments are more than 30 days past due."
-  location: "08fcb112-730a-5cd4-8e15-0a7a9e5b10d6"
+  location: "152bbb2f-98ad-578a-9b21-98fb90769d7f"
 
 - question: "What are the three types of hedging relationships defined in IFRS 9?"
   answer: "There are three types of hedging relationships: (a) fair value hedge: a hedge of the exposure to changes in fair value of a recognised asset or liability or an unrecognised firm commitment, or a component of any such item, that is attributable to a particular risk and could affect profit or loss. (b) cash flow hedge: a hedge of the exposure to variability in cash flows that is attributable to a particular risk associated with all, or a component of, a recognised asset or liability (such as all or some future interest payments on variable-rate debt) or a highly probable forecast transaction, and could affect profit or loss. (c) hedge of a net investment in a foreign operation as defined in IAS 21."
-  location: "c067c388-cb48-5a62-b0ea-a3dbc185aec1"
+  location: "622739b2-fcd9-562e-8859-6b27fdf4241f"
 
 - question: "How should expected credit losses be measured according to IFRS 9?"
   answer: "An entity shall measure expected credit losses of a financial instrument in a way that reflects: (a) an unbiased and probability-weighted amount that is determined by evaluating a range of possible outcomes; (b) the time value of money; and (c) reasonable and supportable information that is available without undue cost or effort at the reporting date about past events, current conditions and forecasts of future economic conditions."
@@ -28,11 +28,11 @@
 
 - question: "When should an entity discontinue hedge accounting?"
   answer: "An entity shall discontinue hedge accounting prospectively only when the hedging relationship (or a part of a hedging relationship) ceases to meet the qualifying criteria (after taking into account any rebalancing of the hedging relationship, if applicable). This includes instances when the hedging instrument expires or is sold, terminated or exercised."
-  location: "106ecedc-1fd8-575e-bf7e-db5a563e2592"
+  location: "830961e5-0245-5950-bed7-6b37e593ed91"
 
 - question: "Which buy/sell contracts for non-financial items are treated as financial instruments?"
   answer: "This Standard shall be applied to those contracts to buy or sell a non-financial item that can be settled net in cash or another financial instrument, or by exchanging financial instruments, as if the contracts were financial instruments, with the exception of contracts that were entered into and continue to be held for the purpose of the receipt or delivery of a non-financial item in accordance with the entity's expected purchase, sale or usage requirements."
-  location: "4e63d59d-5b84-597d-835d-43d5bab00267"
+  location: "4c1571a5-b085-5299-a8f4-1d67ca49a1b6"
 
 - question: "When can an entity designate a financial asset at fair value through profit or loss to avoid an accounting mismatch?"
   answer: "Despite paragraphs 4.1.1–4.1.4, an entity may, at initial recognition, irrevocably designate a financial asset as measured at fair value through profit or loss if doing so eliminates or significantly reduces a measurement or recognition inconsistency (sometimes referred to as an 'accounting mismatch') that would otherwise arise from measuring assets or liabilities or recognising the gains and losses on them on different bases"
@@ -40,7 +40,7 @@
 
 - question: "When should lifetime expected credit losses be measured instead of 12-month expected credit losses?"
   answer: "Subject to paragraphs 5.5.13–5.5.16, at each reporting date, an entity shall measure the loss allowance for a financial instrument at an amount equal to the lifetime expected credit losses if the credit risk on that financial instrument has increased significantly since initial recognition."
-  location: "5557cb7d-6136-5e8c-b7fd-f2e064c70a59"
+  location: "ba5fb0fb-73be-5da3-a92a-ca3e444ca9c7"
 
 - question: "What is the simplified approach for trade receivables, contract assets and lease receivables?"
   answer: "Despite paragraphs 5.5.3 and 5.5.5, an entity shall always measure the loss allowance at an amount equal to lifetime expected credit losses for: (a) trade receivables or contract assets that result from transactions that are within the scope of IFRS 15, and that: (i) do not contain a significant financing component in accordance with IFRS 15 (or when the entity applies the practical expedient in accordance with paragraph 63 of IFRS 15); or (ii) contain a significant financing component in accordance with IFRS 15, if the entity chooses as its accounting policy to measure the loss allowance at an amount equal to lifetime expected credit losses. That accounting policy shall be applied to all such trade receivables or contract assets but may be applied separately to trade receivables and contract assets. (b) lease receivables that result from transactions that are within the scope of IFRS 16, if the entity chooses as its accounting policy to measure the loss allowance at an amount equal to lifetime expected credit losses. That accounting policy shall be applied to all lease receivables but may be applied separately to finance and operating lease receivables."
@@ -72,15 +72,15 @@
 
 - question: "What is the objective of a fair value measurement?"
   answer: "the objective of a fair value measurement in both cases is the same—to estimate the price at which an orderly transaction to sell the asset or to transfer the liability would take place between market participants at the measurement date under current market conditions (ie an exit price at the measurement date from the perspective of a market participant that holds the asset or owes the liability)."
-  location: "d9b4ecc6-8d5f-5aa9-8a2a-22379d5e411a"
+  location: "ed54d942-abc4-5083-97e5-eced7bf031d8"
 
 - question: "What should an entity do when a price for an identical asset or liability is not observable?"
   answer: "When a price for an identical asset or liability is not observable, an entity measures fair value using another valuation technique that maximises the use of relevant observable inputs and minimises the use of unobservable inputs ."
-  location: "d9b4ecc6-8d5f-5aa9-8a2a-22379d5e411a"
+  location: "1ffa9bff-ea75-5f13-b863-c14b31b9c419"
 
 - question: "Which transactions are excluded from the scope of IFRS 13 measurement requirements?"
   answer: "(a) share-based payment transactions within the scope of IFRS 2 Share-based Payment ; (b) leasing transactions accounted for in accordance with IFRS 16 Leases ; and (c) measurements that have some similarities to fair value but are not fair value, such as net realisable value in IAS 2 Inventories or value in use in IAS 36 Impairment of Assets ."
-  location: "30d623f1-07ce-5382-8d63-e30fed55cb73"
+  location: "c4d22e28-0e01-5b0a-9309-158ee37c879b"
 
 - question: "What characteristics of an asset or liability should be taken into account when measuring fair value?"
   answer: "when measuring fair value an entity shall take into account the characteristics of the asset or liability if market participants would take those characteristics into account when pricing the asset or liability at the measurement date. Such characteristics include, for example, the following: (a) the condition and location of the asset; and (b) restrictions, if any, on the sale or use of the asset."
@@ -88,19 +88,19 @@
 
 - question: "In which market should the fair value measurement assume the transaction takes place?"
   answer: "A fair value measurement assumes that the transaction to sell the asset or transfer the liability takes place either: (a) in the principal market for the asset or liability; or (b) in the absence of a principal market, in the most advantageous market for the asset or liability."
-  location: "adfc2ceb-5d7f-570b-80dc-b75fbf126897"
+  location: "39b985be-cd15-5fce-81dd-3313e4736ca9"
 
 - question: "Should transaction costs be included in the fair value measurement?"
   answer: "The price in the principal (or most advantageous) market used to measure the fair value of the asset or liability shall not be adjusted for transaction costs . Transaction costs shall be accounted for in accordance with other IFRSs. Transaction costs are not a characteristic of an asset or a liability; rather, they are specific to a transaction and will differ depending on how an entity enters into a transaction for the asset or liability."
-  location: "f782254c-6b0e-5342-a2c1-2336f7b72e5f"
+  location: "562950fb-8767-5e07-9bcf-01c23767267c"
 
 - question: "What is the highest and best use of a non-financial asset?"
   answer: "The highest and best use of a non-financial asset takes into account the use of the asset that is physically possible, legally permissible and financially feasible"
-  location: "74fade6b-7871-5e9c-bee0-3102437af635"
+  location: "6b307c33-425e-5fd0-89c9-bc98c9fccec2"
 
 - question: "From whose perspective is the highest and best use determined?"
   answer: "Highest and best use is determined from the perspective of market participants, even if the entity intends a different use. However, an entity's current use of a non-financial asset is presumed to be its highest and best use unless market or other factors suggest that a different use by market participants would maximise the value of the asset."
-  location: "74fade6b-7871-5e9c-bee0-3102437af635"
+  location: "ae1a18ed-e905-5232-b802-e02926f15701"
 
 - question: "What does a fair value measurement of a liability assume?"
   answer: "A fair value measurement assumes that a financial or non-financial liability or an entity's own equity instrument (eg equity interests issued as consideration in a business combination) is transferred to a market participant at the measurement date. The transfer of a liability or an entity's own equity instrument assumes the following: (a) A liability would remain outstanding and the market participant transferee would be required to fulfil the obligation. The liability would not be settled with the counterparty or otherwise extinguished on the measurement date."
@@ -116,7 +116,7 @@
 
 - question: "What are the three widely used valuation techniques mentioned in IFRS 13?"
   answer: "Three widely used valuation techniques are the market approach, the cost approach and the income approach."
-  location: "c0cf0a28-0af9-5568-85fa-36971f566791"
+  location: "c69684f8-143b-5304-98f6-7c38ca727ddc"
 
 - question: "What are the three levels of the fair value hierarchy?"
   answer: "this IFRS establishes a fair value hierarchy that categorises into three levels (see paragraphs 76–90) the inputs to valuation techniques used to measure fair value. The fair value hierarchy gives the highest priority to quoted prices (unadjusted) in active markets for identical assets or liabilities (Level 1 inputs) and the lowest priority to unobservable inputs ( Level 3 inputs )."
@@ -136,7 +136,7 @@
 
 - question: "What should an entity develop unobservable inputs using?"
   answer: "An entity shall develop unobservable inputs using the best information available in the circumstances, which might include the entity's own data. In developing unobservable inputs, an entity may begin with its own data, but it shall adjust those data if reasonably available information indicates that other market participants would use different data or there is something particular to the entity that is not available to other market participants (eg an entity-specific synergy)."
-  location: "e036e81b-ad8f-5d41-a9f7-fe3ab4bf7507"
+  location: "2d62be3f-3933-5d0c-87b0-ab8327e4593b"
 
 - question: "What is an active market according to IFRS 13?"
   answer: "A market in which transactions for the asset or liability take place with sufficient frequency and volume to provide pricing information on an ongoing basis."
@@ -160,7 +160,7 @@
 
 - question: "What are the objectives of the credit risk disclosures in IFRS 7?"
   answer: "The credit risk disclosures made in accordance with paragraphs 35F–35N shall enable users of financial statements to understand the effect of credit risk on the amount, timing and uncertainty of future cash flows. To achieve this objective, credit risk disclosures shall provide: information about an entity's credit risk management practices and (a) how they relate to the recognition and measurement of expected credit losses, including the methods, assumptions and information used to measure expected credit losses; quantitative and qualitative information that allows users of financial (b) statements to evaluate the amounts in the financial statements arising from expected credit losses, including changes in the amount of expected credit losses and the reasons for those changes; and information about an entity's credit risk exposure (ie the credit risk (c) inherent in an entity's financial assets and commitments to extend credit) including significant credit risk concentrations."
-  location: "91ce0955-0a39-5544-bf6f-4b0c99c41755"
+  location: "a561125b-b4b0-53ed-ba4d-850f49cebfcf"
 
 - question: "What must an entity disclose about how it determined significant increases in credit risk?"
   answer: "how an entity determined whether the credit risk of financial instruments has increased significantly since initial recognition, including, if and how: (i) financial instruments are considered to have low credit risk in accordance with paragraph 5.5.10 of IFRS 9, including the classes of financial instruments to which it applies; and (ii) the presumption in paragraph 5.5.11 of IFRS 9, that there have been significant increases in credit risk since initial recognition when financial assets are more than 30 days past due, has been rebutted;"
@@ -172,15 +172,15 @@
 
 - question: "What must be disclosed about modifications of contractual cash flows?"
   answer: "To enable users of financial statements to understand the nature and effect of modifications of contractual cash flows on financial assets that have not resulted in derecognition and the effect of such modifications on the measurement of expected credit losses, an entity shall disclose: the amortised cost before the modification and the net modification (a) gain or loss recognised for financial assets for which the contractual cash flows have been modified during the reporting period while they had a loss allowance measured at an amount equal to lifetime expected credit losses; and the gross carrying amount at the end of the reporting period of (b) financial assets that have been modified since initial recognition at a time when the loss allowance was measured at an amount equal to lifetime expected credit losses and for which the loss allowance has changed during the reporting period to an amount equal to 12-month expected credit losses."
-  location: "dfb63f11-f561-58e4-b6fc-30307d00feef"
+  location: "30e54b56-9136-5cb5-915e-6906864bafc7"
 
 - question: "What information about collateral and credit enhancements must be disclosed?"
   answer: "To enable users of financial statements to understand the effect of collateral and other credit enhancements on the amounts arising from expected credit losses, an entity shall disclose by class of financial instrument: (a) the amount that best represents its maximum exposure to credit risk at the end of the reporting period without taking account of any collateral held or other credit enhancements (eg netting agreements that do not qualify for offset in accordance with IAS 32). (b) a narrative description of collateral held as security and other credit enhancements, including: (i) a description of the nature and quality of the collateral held; (ii) an explanation of any significant changes in the quality of that collateral or credit enhancements as a result of deterioration or changes in the collateral policies of the entity during the reporting period; and (iii) information about financial instruments for which an entity has not recognised a loss allowance because of the collateral."
-  location: "a61a4369-e58a-507c-a526-67848edbe634"
+  location: "3a5f1daf-d2d6-50db-9eb7-12e60a5fa1ef"
 
 - question: "What must be disclosed about written-off financial assets?"
   answer: "An entity shall disclose the contractual amount outstanding on financial assets that were written off during the reporting period and are still subject to enforcement activity."
-  location: "a61a4369-e58a-507c-a526-67848edbe634"
+  location: "dbcc0071-efd8-5e44-91ed-369ab035c9d7"
 
 - question: "What must be disclosed about liquidity risk?"
   answer: "An entity shall disclose: a maturity analysis for non-derivative financial liabilities (including (a) issued financial guarantee contracts) that shows the remaining contractual maturities. (b) a maturity analysis for derivative financial liabilities. The maturity analysis shall include the remaining contractual maturities for those derivative financial liabilities for which contractual maturities are essential for an understanding of the timing of the cash flows (see paragraph B11B). (c) a description of how it manages the liquidity risk inherent in (a) and (b)."

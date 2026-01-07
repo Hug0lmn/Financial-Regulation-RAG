@@ -1,6 +1,6 @@
 - name: RAG
   dense:
-    name: BAAI/bge-base-en-v1.5
+    name: snowflake/snowflake-arctic-embed-m
     size: 768
   sparse:
-    name: Qdrant/bm42-all-minilm-l6-v2-attentions
+    name: Qdrant/minicoil-v1

@@ -19,7 +19,6 @@ def del_collection_yaml(collection_name) :
 
     path = Path(__file__).resolve().parent / "collections.yaml"
 
-    #load yaml file
     with open(path) as f :
         collection_config = yaml.safe_load(f)
 
@@ -28,7 +27,6 @@ def del_collection_yaml(collection_name) :
         if col["name"] == collection_name :
             collection_config.pop(idx)
 
-            #Save back 
             with open(path, "w") as f :
                 yaml.safe_dump(collection_config, f, sort_keys=False)
             return True

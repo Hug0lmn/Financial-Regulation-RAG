@@ -1,6 +1,7 @@
 import json
 from pathlib import Path
 import uuid
+from tqdm import tqdm
 
 from transformers import AutoTokenizer
 from langchain_text_splitters import RecursiveCharacterTextSplitter
@@ -15,7 +16,6 @@ def truncate(value, length):
     return "0"
 
 def create_chunk_id(metadata, idx) :
-    #Build a deterministic UUID5 for a chunk based on its metadata.
 
     parts = [
         metadata.get("source"),
