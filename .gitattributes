@@ -1,2 +1,0 @@
-.gguf filter=lfs diff=lfs merge=lfs -text
-LLM/Qwen3-1.7B-Q8_0.gguf filter=lfs diff=lfs merge=lfs -text
